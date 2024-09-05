@@ -32,7 +32,7 @@ if (isset($_POST['products_userfield'][10])) {
         \xtc_db_query(
             \sprintf(
                 'REPLACE INTO `%s` (`product_id`, `country_code`, `max_quantity`)
-                       VALUES (%d, %s, %d)',
+                       VALUES (%d, "%s", %d)',
                 \grandeljay_cao_max_products::class,
                 $products_id,
                 $country_code,
