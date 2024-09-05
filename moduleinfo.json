@@ -1,0 +1,32 @@
+{
+    "name": "CAO Max Products",
+    "archiveName": "grandeljay/cao-max-products",
+    "sourceDir": "src",
+    "version": "auto",
+    "shortDescription": "Allows you to define a maximum quantity a product may be sold.",
+    "description": "Please refer to Details for a full description.",
+    "developer": "grandeljay",
+    "developerWebsite": "https://github.com/grandeljay",
+    "website": "https://github.com/grandeljay/modified-cao-max-products",
+    "modifiedCompatibility": [
+        "3.1.0"
+    ],
+    "category": "productinfos",
+    "price": "free",
+    "require": {
+        "composer/autoload": "^1.5.0",
+        "robinthehood/modified-std-module": "^0.12.0",
+        "grandeljay/translator": "^0.3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Grandeljay\\CaoMaxProducts\\": "src-mmlc"
+        }
+    },
+    "php": {
+        "version": "^8.1.0"
+    },
+    "mmlc": {
+        "version": "^1.22.0"
+    }
+}
