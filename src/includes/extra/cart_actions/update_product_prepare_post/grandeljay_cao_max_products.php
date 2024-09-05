@@ -60,8 +60,8 @@ for ($i = 0; $i < $iterations; $i++) {
     );
     $products_max_quantity_data  = \xtc_db_fetch_array($products_max_quantity_query);
 
-    if (false === $products_max_quantity_data) {
-        return;
+    if (!\is_array($products_max_quantity_data)) {
+        continue;
     }
 
     $products_max_quantity = (int) $products_max_quantity_data['max_quantity'];

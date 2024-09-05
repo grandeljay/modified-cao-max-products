@@ -52,7 +52,7 @@ $products_max_quantity_query = \xtc_db_query(
 );
 $products_max_quantity_data  = \xtc_db_fetch_array($products_max_quantity_query);
 
-if (false === $products_max_quantity_data) {
+if (!\is_array($products_max_quantity_data)) {
     return;
 }
 
