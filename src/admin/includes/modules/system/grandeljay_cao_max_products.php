@@ -13,7 +13,7 @@ use RobinTheHood\ModifiedStdModule\Classes\StdModule;
 
 class grandeljay_cao_max_products extends StdModule
 {
-    public const VERSION = '0.1.0';
+    public const VERSION = '0.1.1';
 
     public function __construct()
     {
