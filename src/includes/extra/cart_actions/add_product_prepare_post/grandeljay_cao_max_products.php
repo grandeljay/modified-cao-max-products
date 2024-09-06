@@ -83,6 +83,18 @@ if ($products_in_cart + $products_quantity <= $products_max_quantity) {
 unset($_POST['products_id']);
 unset($_POST['products_qty']);
 
+/** Reduce quantity in cart */
+foreach ($_SESSION['cart']->contents as $products_id_with_options => &$products_data) {
+    \preg_match('/\d+/', $products_id_with_options, $products_id_matches);
+
+    if (isset($products_id_matches[0]) && (int) $products_id_matches[0] === $products_id) {
+        $products_data['qty'] = $products_max_quantity;
+
+        break;
+    }
+}
+
+/** Output message */
 $messageStack->add_session(
     'global',
     \sprintf(

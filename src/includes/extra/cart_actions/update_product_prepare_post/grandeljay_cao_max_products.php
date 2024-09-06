@@ -82,6 +82,18 @@ for ($i = 0; $i < $iterations; $i++) {
     unset($_POST['cart_quantity'][$i]);
     unset($_POST['old_qty'][$i]);
 
+    /** Reduce quantity in cart */
+    foreach ($_SESSION['cart']->contents as $products_id_with_options => &$products_data) {
+        \preg_match('/\d+/', $products_id_with_options, $products_id_matches);
+
+        if (isset($products_id_matches[0]) && (int) $products_id_matches[0] === $products_id) {
+            $products_data['qty'] = $products_max_quantity;
+
+            break;
+        }
+    }
+
+    /** Output message */
     $messageStack->add_session(
         'global',
         \sprintf(
