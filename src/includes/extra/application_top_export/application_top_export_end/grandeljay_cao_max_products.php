@@ -14,10 +14,13 @@ if (!isset($_POST['pID'])) {
     return;
 }
 
+$delete_entry = false;
+
 if (isset($_POST['products_userfield'][10])) {
     $products_id           = $_POST['pID'];
     $products_userfield_10 = \trim($_POST['products_userfield'][10]);
     $products_entries      = \explode(';', $products_userfield_10);
+    $products_entries      = \array_filter($products_entries);
 
     foreach ($products_entries as $products_entry) {
         $country_code_and_quantity = \explode(':', $products_entry);
@@ -40,12 +43,21 @@ if (isset($_POST['products_userfield'][10])) {
             )
         );
     }
+
+    if (empty($products_entries)) {
+        $delete_entry = true;
+    }
 } else {
+    $delete_entry = true;
+}
+
+if ($delete_entry) {
     \xtc_db_query(
         \sprintf(
             'DELETE FROM `%s`
                    WHERE `product_id` = %d',
-            \grandeljay_cao_max_products::class
+            \grandeljay_cao_max_products::class,
+            $_POST['pID']
         )
     );
 }
